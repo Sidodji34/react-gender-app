@@ -31,8 +31,6 @@ class TextInput extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Send name ' + this.state.value);
-    console.log('Props ' + this.state.gender);
     this.requestApi();
     this.setState({ value: '' });
   }
@@ -44,7 +42,6 @@ class TextInput extends React.Component {
       fetch(url).then(response => response.json())
         .then((result) => {
           this.setState({ name: result.name, gender: result.gender })
-          console.log(result);
         })
       }
     } catch (error) {
@@ -83,19 +80,5 @@ function ErrorMessage() {
     <div className='error-message'>Name is too short.</div>
   )
 }
-
-
-
-/*
-const value = this.state.value;
-    if (value.length < 3) {
-      this.setState({ valid: false });
-      console.log(this.state.valid);
-      return;
-    }
-    this.requestApi();
-    this.setState({ value: '' });
-  }
-  */
 
 export default Main;
